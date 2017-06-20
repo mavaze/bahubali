@@ -18,13 +18,13 @@ public class CompositeLayout extends TextLayout {
 		
 		super(0, 0, 100, 48);
 		
-		TextLayout statisticsLayout = new StatisticsLayout(0, 0, 50, 24);
+		TextLayout statisticsLayout = new StatisticsLayout(0, 29, 50, 38);
 		embeddedLayouts.put(StatisticsLayout.KEY, statisticsLayout);
 		
-		TextLayout actionsLayout = new ActionsLayout(0, 25, 50, 48);
-		embeddedLayouts.put(ActionsLayout.KEY, actionsLayout);
+		TextLayout menusLayout = new MenusLayout(0, 39, 50, 48);
+		embeddedLayouts.put(MenusLayout.KEY, menusLayout);
 		
-		TextLayout mapLayout = new MapLayout(51, 0, 100, 48);
+		MapLayout mapLayout = new MapLayout(51, 0, 100, 48);
 		embeddedLayouts.put(MapLayout.KEY, mapLayout);
 	}
 
@@ -36,7 +36,7 @@ public class CompositeLayout extends TextLayout {
 				return letter;
 			}
 		}
-		return '.';
+		return '\u0000';
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.mavaze.puzzles.bahubali.core.persistence;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,8 +22,8 @@ public class SerializedSnapshotDao implements SnapshotDao {
 	}
 
 	@Override
-	public Snapshot load(final String identifier) throws ClassNotFoundException, IOException {
-		try (FileInputStream fin = new FileInputStream(identifier + ".snapshot");
+	public Snapshot load(final File file) throws ClassNotFoundException, IOException {
+		try (FileInputStream fin = new FileInputStream(file);
 				ObjectInputStream ois = new ObjectInputStream(fin)) {
 			return (Snapshot) ois.readObject();
 		}

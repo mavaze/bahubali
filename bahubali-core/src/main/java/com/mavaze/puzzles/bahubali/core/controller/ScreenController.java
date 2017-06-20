@@ -4,12 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.mavaze.puzzles.bahubali.core.action.Action;
+import com.mavaze.puzzles.bahubali.core.action.Menu;
 import com.mavaze.puzzles.bahubali.core.commands.HomeCompositeAction;
-import com.mavaze.puzzles.bahubali.core.layout.ActionsLayout;
 import com.mavaze.puzzles.bahubali.core.layout.CompositeLayout;
+import com.mavaze.puzzles.bahubali.core.layout.MenusLayout;
 import com.mavaze.puzzles.bahubali.core.layout.StatisticsLayout;
 import com.mavaze.puzzles.bahubali.core.layout.TextLayout;
+import com.mavaze.puzzles.bahubali.core.listener.ScreenStateChangeListener;
 import com.mavaze.puzzles.bahubali.core.listener.StateChangeListener;
 import com.mavaze.puzzles.bahubali.core.terminal.Terminal;
 import com.mavaze.puzzles.bahubali.core.terminal.TextTerminal;
@@ -40,8 +41,8 @@ public class ScreenController {
 		terminal.draw();
 	}
 
-	public void updateActions(List<Action> actions) {
-		state.put(ActionsLayout.KEY, actions);
+	public void updateActions(List<? extends Menu> menus) {
+		state.put(MenusLayout.KEY, menus);
 		layout.updateState(state);
 		terminal.draw();
 	}

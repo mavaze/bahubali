@@ -16,7 +16,7 @@ public class SaveGameAction extends AbstractAction {
 	}
 
 	@Override
-	public String getActionName() {
+	public String getMenuName() {
 		return "Save Game";
 	}
 

@@ -34,6 +34,10 @@ public abstract class TextLayout implements Layout {
 	public int getY2() {
 		return y2;
 	}
+	
+	public void clearLayout() {
+		area = new char[x2-x1+1][y2-y1+1];
+	}
 
 	public char getCharacterAt(int x, int y) {
 		if( x>=x1 && x<=x2 && y>=y1 && y<=y2) {
@@ -42,9 +46,9 @@ public abstract class TextLayout implements Layout {
 		return '\u0000';
 	}
 	
-	public void setStringAt(int x, int y, String menu) {
-		for(int p=0; p < menu.length(); p++) {
-			area[p+x-x1][y-y1] = menu.charAt(p);
+	public void setStringAt(int x, int y, String text) {
+		for(int p=0; p < text.length(); p++) {
+			area[p+x-x1][y-y1] = text.charAt(p);
 		}
 	}
 

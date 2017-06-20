@@ -3,8 +3,8 @@ package com.mavaze.puzzles.bahubali.core.context;
 import java.util.Map;
 
 import com.mavaze.puzzles.bahubali.core.action.Action;
-import com.mavaze.puzzles.bahubali.core.player.PlayerDetails;
-import com.mavaze.puzzles.bahubali.core.settings.GameSettings;
+import com.mavaze.puzzles.bahubali.core.player.Player;
+import com.mavaze.puzzles.bahubali.core.topic.Topic;
 
 public class GameContextImpl implements GameContext {
 
@@ -12,17 +12,15 @@ public class GameContextImpl implements GameContext {
 	
 	private Action activeAction;
 	
+	private Topic activeTopic;
+	
+	private Player player;
+	
 	@SuppressWarnings("unused")
 	private Map<String, Object> properties;
 
-	public GameSettings getSettings() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public PlayerDetails getPlayer() {
-		// TODO Auto-generated method stub
-		return null;
+	public Player getPlayer() {
+		return player;
 	}
 
 	@Override
@@ -33,6 +31,21 @@ public class GameContextImpl implements GameContext {
 	@Override
 	public void setActiveAction(Action activeAction) {
 		this.activeAction = activeAction;
+	}
+	
+	@Override
+	public Topic getActiveTopic() {
+		return activeTopic;
+	}
+
+	@Override
+	public void setActiveTopic(Topic activeTopic) {
+		this.activeTopic = activeTopic;	
+	}
+
+	@Override
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 }

@@ -15,7 +15,7 @@ public class ExitGameAction extends AbstractAction {
 	}
 
 	@Override
-	public String getActionName() {
+	public String getMenuName() {
 		return "Exit";
 	}
 

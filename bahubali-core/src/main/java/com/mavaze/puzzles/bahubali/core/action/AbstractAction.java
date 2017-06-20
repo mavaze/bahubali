@@ -11,6 +11,10 @@ public abstract class AbstractAction implements Action {
 	
 	protected StateChangeListener listener;
 	
+	public AbstractAction() {
+		
+	}
+	
 	public AbstractAction(StateChangeListener listener) {
 		this.listener = listener;
 	}

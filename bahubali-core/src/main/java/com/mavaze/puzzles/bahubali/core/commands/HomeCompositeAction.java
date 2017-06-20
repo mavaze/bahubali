@@ -5,20 +5,24 @@ import java.util.List;
 
 import com.mavaze.puzzles.bahubali.core.action.AbstractAction;
 import com.mavaze.puzzles.bahubali.core.action.Action;
-import com.mavaze.puzzles.bahubali.core.controller.ActionsUpdateEvent;
+import com.mavaze.puzzles.bahubali.core.listener.MenusUpdateEvent;
 import com.mavaze.puzzles.bahubali.core.listener.StateChangeListener;
 
 public class HomeCompositeAction extends AbstractAction {
 		
 	private List<Action> actions = new ArrayList<>();
 	
+	@Override
+	public String getMenuName() {
+		return "Welcome to Bahubali !!!";
+	}
+	
 	public HomeCompositeAction(StateChangeListener listener) {
 		
 		super(listener);
 		
-		Action backAction = new BackAction(listener).builder().backAction(this).build();			
-		Action newGameAction = new NewGameAction(listener).builder().backAction(backAction).build();
-		Action loadGameAction = new LoadGameAction(listener).builder().backAction(backAction).build();
+		Action newGameAction = new NewGameAction(listener).builder().backAction(this).build();
+		Action loadGameAction = new LoadGameAction(listener).builder().backAction(this).build();
 		Action exitGameAction = new ExitGameAction(listener);
 		
 		actions.add(newGameAction);
@@ -29,14 +33,9 @@ public class HomeCompositeAction extends AbstractAction {
 	@Override
 	public void execute() {
 		super.execute();
-		ActionsUpdateEvent event = new ActionsUpdateEvent();
-		event.setActions(actions);
-		listener.onActionsLayoutUpdated(event);
-	}
-
-	@Override
-	public String getActionName() {
-		return "Home";
+		MenusUpdateEvent event = new MenusUpdateEvent(getMenuName());
+		event.setMenus(actions);
+		listener.onMenusLayoutUpdated(event);
 	}
 
 	@Override
@@ -51,7 +50,6 @@ public class HomeCompositeAction extends AbstractAction {
 		} catch (NumberFormatException e) {
 			
 		}
-		
 	}
 
 }
