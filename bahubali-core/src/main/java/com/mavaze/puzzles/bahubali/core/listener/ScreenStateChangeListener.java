@@ -12,11 +12,13 @@ public final class ScreenStateChangeListener implements StateChangeListener {
 	
 	@Override
 	public void onStatisticsUpdated(StatisticsUpdateEvent event) {
-		screenController.updateStatistics(event.getStatistics());
+		// TODO: convert event to statistics object
+		screenController.updateStatistics(event);
 	}
 	
 	@Override
 	public void onMenusLayoutUpdated(MenusUpdateEvent event) {
+		// TODO: convert event to list of menus
 		screenController.updateMenus(event);
 	}
 	

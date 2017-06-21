@@ -5,6 +5,7 @@ import java.util.List;
 import com.mavaze.puzzles.bahubali.core.context.GameContextHolder;
 import com.mavaze.puzzles.bahubali.core.listener.MenusUpdateEvent;
 import com.mavaze.puzzles.bahubali.core.listener.StateChangeListener;
+import com.mavaze.puzzles.bahubali.core.listener.StatisticsUpdateEvent;
 import com.mavaze.puzzles.bahubali.core.topic.Topic;
 import com.mavaze.puzzles.bahubali.core.topic.TopicRegistry;
 
@@ -43,6 +44,7 @@ public class NewGameAction extends AbstractAction {
 		if (selectedOption > 0 && selectedOption <= topics.size()) {
 			Topic topic = topics.get(selectedOption - 1);
 			GameContextHolder.getContext().setActiveTopic(topic);
+			listener.onStatisticsUpdated(new StatisticsUpdateEvent());
 			nextAction.execute();
 		} else if (backAction != null && selectedOption == topics.size() + 1) {
 			backAction.execute();

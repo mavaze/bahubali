@@ -4,6 +4,7 @@ import com.mavaze.puzzles.bahubali.core.character.Player;
 import com.mavaze.puzzles.bahubali.core.context.GameContextHolder;
 import com.mavaze.puzzles.bahubali.core.listener.MenusUpdateEvent;
 import com.mavaze.puzzles.bahubali.core.listener.StateChangeListener;
+import com.mavaze.puzzles.bahubali.core.listener.StatisticsUpdateEvent;
 import com.mavaze.puzzles.bahubali.core.topic.Topic;
 
 public class CreatePlayerAction extends AbstractAction {
@@ -23,7 +24,6 @@ public class CreatePlayerAction extends AbstractAction {
 	public void execute() {
 		super.execute();
 		MenusUpdateEvent event = new MenusUpdateEvent(getMenuName());
-		//event.setMenus(Collections.singletonList((Action)this));
 		listener.onMenusLayoutUpdated(event);
 	}
 	
@@ -37,6 +37,7 @@ public class CreatePlayerAction extends AbstractAction {
 	@Override
 	public void postExecute(String response) {
 		createPlayer(response);
+		listener.onStatisticsUpdated(new StatisticsUpdateEvent());
 		nextAction = new PlayerCompositeAction(listener);
 		nextAction.execute();
 	}

@@ -10,6 +10,11 @@ public class Resources implements Serializable {
 	
 	private int elixir;
 
+	public Resources(int gold, int elixir) {
+		this.gold = gold;
+		this.elixir = elixir;
+	}
+
 	public int getGold() {
 		return gold;
 	}
@@ -24,5 +29,12 @@ public class Resources implements Serializable {
 
 	public void setElixir(int elixir) {
 		this.elixir = elixir;
+	}
+	
+	@Override
+	public String toString() {
+		return "Resources::Gold -> " + gold + 
+				"\nResources::Elixir -> " + elixir;
+		
 	}
 }

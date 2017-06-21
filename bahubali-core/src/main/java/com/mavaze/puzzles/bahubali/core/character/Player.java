@@ -5,17 +5,27 @@ import java.util.List;
 
 import com.mavaze.puzzles.bahubali.core.actions.Action;
 
+/**
+ * Player class
+ * 
+ * To have Player Topic specific wrap Player in another object like PlayerDetails
+ * And let Topic decide the extra properties, like Resources etc, of Player
+ * For now, assuming these properties be common across all Topics, keeping all them here
+ * 
+ * @author mayuresh_vaze
+ * 
+ */
 public class Player implements GameCharacter, Serializable {
 	
 	private static final long serialVersionUID = -6155318268573153904L;
 
 	private String name;
 	
-	private int experience;
+	private int xp = 10;
 
-	private Health health;
+	private Health health = new Health(100, 50, 3);
 	
-	private Resources resources;
+	private Resources resources = new Resources(1000, 10);
 		
 	private List<Action> actions;
 
@@ -31,10 +41,6 @@ public class Player implements GameCharacter, Serializable {
 		this.actions = actions;
 	}
 
-	public String getName() {
-		return name;
-	}
-
 	@Override
 	public String getMenuName() {
 		return name;
@@ -48,6 +54,14 @@ public class Player implements GameCharacter, Serializable {
 	@Override
 	public Health getHealth() {
 		return health;
+	}
+
+	public int getXp() {
+		return xp;
+	}
+
+	public Resources getResources() {
+		return resources;
 	}
 
 }

@@ -19,5 +19,31 @@ public class Health implements Serializable {
 	
 	// A medical kit can increase health by 20% max
 	protected int medicalKit;
+
+	public Health(int life, int shield, int medicalKit) {
+		this.life = life;
+		this.shield = shield;
+		this.medicalKit = medicalKit;
+	}
+
+	public int getLife() {
+		return life;
+	}
+
+	public int getShield() {
+		return shield;
+	}
+
+	public int getMedicalKit() {
+		return medicalKit;
+	}
+	
+	@Override
+	public String toString() {
+		return "Health::Life -> " + life + 
+				"\nHealth::Shield -> " + shield + 
+				"\nHealth::MedicalKit -> " + medicalKit;
+		
+	}
 	
 }

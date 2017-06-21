@@ -36,8 +36,8 @@ public class TextTerminal implements Terminal {
 		
 		String playerName = "Guest";
 		Player player = GameContextHolder.getContext().getActivePlayer();
-		if (player!=null && player.getName()!=null) {
-			playerName = player.getName();
+		if (player!=null && player.getMenuName()!=null) {
+			playerName = player.getMenuName();
 		}
 		
 		System.out.print("[" + playerName + "] # ");
@@ -46,6 +46,8 @@ public class TextTerminal implements Terminal {
 				String answer = scanner.nextLine();
 				GameContextHolder.getContext().getActiveAction().postExecute(answer);
 				break;
+			} catch (NumberFormatException e) {
+				System.out.println("Invalid option selected.");
 			} catch (Exception e) {
 				System.out.println("Error processing your input.");
 			}

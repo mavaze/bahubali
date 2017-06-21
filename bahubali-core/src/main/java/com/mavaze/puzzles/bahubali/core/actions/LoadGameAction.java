@@ -10,6 +10,7 @@ import com.mavaze.puzzles.bahubali.core.context.GameContextHolder;
 import com.mavaze.puzzles.bahubali.core.domain.GameSnapshot;
 import com.mavaze.puzzles.bahubali.core.listener.MenusUpdateEvent;
 import com.mavaze.puzzles.bahubali.core.listener.StateChangeListener;
+import com.mavaze.puzzles.bahubali.core.listener.StatisticsUpdateEvent;
 import com.mavaze.puzzles.bahubali.core.persistence.SerializedSnapshotDao;
 import com.mavaze.puzzles.bahubali.core.persistence.SnapshotDao;
 
@@ -43,10 +44,12 @@ public class LoadGameAction extends AbstractAction {
 		for (File savedSnashot : savedSnashots) {
 		    SnapshotDao snapshotDao = new SerializedSnapshotDao();
 			try {
+				// Loading all available snapshots in advance to show only
+				// that list of snapshots which were able to get deserialized
 				GameSnapshot snapshot = snapshotDao.load(savedSnashot);
 				snapshots.add(snapshot);
 			} catch (Exception e) {
-				e.printStackTrace();
+				// Skipping this snapshot as it was failed to deserialize
 			}
 		}
 		
@@ -68,19 +71,21 @@ public class LoadGameAction extends AbstractAction {
 	
 	@Override
 	public void postExecute(String response) {
+		
 		int selectedOption = Integer.parseInt(response);
+		
 		if (selectedOption > 0 || selectedOption <= snapshots.size()) {
+			
 			GameSnapshot loadedSnapshot = snapshots.get(selectedOption - 1);
+			Action activeAction = ((AbstractAction) loadedSnapshot.getLastAction())
+					.builder().listener(listener).build();
 			
-			Action lastAction = loadedSnapshot.getLastAction();
 			GameContext context = GameContextHolder.getContext();
-			
-			Action activeAction = ((AbstractAction)lastAction).builder().listener(listener).build();
-			
 			context.setActiveTopic(loadedSnapshot.getLastTopic());
 			context.setActivePlayer(loadedSnapshot.getLastPlayer());
 			context.setActiveAction(activeAction);
 			
+			listener.onStatisticsUpdated(new StatisticsUpdateEvent());
 			activeAction.execute();
 		} else {
 			throw new NumberFormatException("Invalid option selected.");

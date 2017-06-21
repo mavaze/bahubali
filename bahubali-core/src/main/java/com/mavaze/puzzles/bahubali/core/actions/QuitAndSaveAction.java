@@ -25,7 +25,7 @@ public class QuitAndSaveAction extends AbstractAction {
 		GameContext context = GameContextHolder.getContext();
 		
 		Format formatter = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-		String snapshotName = context.getActivePlayer().getName() + "-" + formatter.format(new Date());
+		String snapshotName = context.getActivePlayer().getMenuName() + "-" + formatter.format(new Date());
 				
 		GameSnapshot snapshot = new GameSnapshot(snapshotName);
 		snapshot.setLastAction(context.getActiveAction());
