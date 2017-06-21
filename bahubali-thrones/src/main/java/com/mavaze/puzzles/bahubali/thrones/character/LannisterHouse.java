@@ -1,7 +1,5 @@
 package com.mavaze.puzzles.bahubali.thrones.character;
 
-import java.util.Map;
-
 import com.mavaze.puzzles.bahubali.core.character.GameCharacter;
 import com.mavaze.puzzles.bahubali.core.character.Health;
 
@@ -12,12 +10,6 @@ public class LannisterHouse implements GameCharacter {
 	@Override
 	public String getMenuName() {
 		return "House Lannister";
-	}
-
-	@Override
-	public Map<String, Object> getCharacteristics() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
