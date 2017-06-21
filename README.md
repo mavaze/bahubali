@@ -23,7 +23,8 @@ The requirements are quite lose demanding a lot imagination than focusing on any
 ### Workflow 4 (Loading Game):
 1.	Load Game > Show List of saved snapshots
 2.	User selects one and bypass all initial steps as theme, player, living objects, last actions etc. were restored to its saved state, from where player can resume game.
-Design Considerations:
+
+# Design Considerations:
 1.	Coded it to interfaces at maximum extent so that one implementation can be swapped out with another one, achieving lose coupling.
 2.	Supports multiple Topics/Themes and with one line change of code (call register method of TopicRegistry which maintains list of loaded themes) and addition of an jar in classpath will do its magic. Currently I have 2 themes viz. ‘Classic’ and ‘Game of Thrones’. ‘Classic’ one is not fully implemented though.
 3.	Since future requirement could be to map an object on the map, instead of writing sysouts one after another, the text on screen is managed with its x,y coordinates.
@@ -36,17 +37,17 @@ Design Considerations:
 
 This is a maven structured application with following 4 modules:
 
-* bahubali-core
-A core module which works as a framework for any theme and its objects get loaded in. It also provides default behavior/actions keeping theme to implements anything at bare minimum level.
+* **bahubali-core**
+...A core module which works as a framework for any theme and its objects get loaded in. It also provides default behavior/actions keeping theme to implements anything at bare minimum level.
 
-* bahubali-classis
-A classic theme with intention of implementation of a regular city with objects like hotel, hospital, bank etc. It is not implemented fully yet. This is added to demonstrate theme/topic functionality.
+* **bahubali-classis**
+...A classic theme with intention of implementation of a regular city with objects like hotel, hospital, bank etc. It is not implemented fully yet. This is added to demonstrate theme/topic functionality.
 
-* bahubali-thrones
-It implements popular ‘Game of Thrones’ theme with names of objects coming from the very TV show. It’s doesnot necessarily walk you through the same story though.
+* **bahubali-thrones**
+...It implements popular ‘Game of Thrones’ theme with names of objects coming from the very TV show. It’s doesnot necessarily walk you through the same story though.
 
-* bahubali-build
-Holds entry point of game i.e. Main class. It loads the themes into ThemeRegistry and give game a push. This can be extended to read theme configuration from xml/properties file to control application from outside. 
+* **bahubali-build**
+...Holds entry point of game i.e. Main class. It loads the themes into ThemeRegistry and give game a push. This can be extended to read theme configuration from xml/properties file to control application from outside. 
 
 # How to compile and run
 ```
