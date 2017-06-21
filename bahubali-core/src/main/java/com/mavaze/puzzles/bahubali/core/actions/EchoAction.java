@@ -21,7 +21,9 @@ public class EchoAction extends AbstractAction {
 	
 	@Override
 	public void postExecute(String response) {
-		nextAction.execute();
+		if(nextAction != null) {
+			nextAction.execute();
+		}
 	}
 
 	@Override

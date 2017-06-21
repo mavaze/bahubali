@@ -11,7 +11,7 @@ public class ExitGameAction extends AbstractAction {
 
 	@Override
 	public void execute() {
-		new EchoAction("Exiting the game.").builder().listener(listener).build();
+		new EchoAction("Exiting the game.").builder().listener(listener).build().execute();;
 		System.exit(0);		
 	}
 

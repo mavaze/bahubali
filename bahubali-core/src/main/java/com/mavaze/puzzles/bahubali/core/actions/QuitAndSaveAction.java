@@ -38,7 +38,7 @@ public class QuitAndSaveAction extends AbstractAction {
 		} catch (Exception e) {
 			new EchoAction("Unable to save game").builder().listener(listener).build();
 		}
-		new ExitGameAction().execute();
+		new ExitGameAction().builder().listener(listener).build().execute();
 	}
 
 }

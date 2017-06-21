@@ -45,8 +45,9 @@ public class TextTerminal implements Terminal {
 			try {
 				String answer = scanner.nextLine();
 				GameContextHolder.getContext().getActiveAction().postExecute(answer);
+				break;
 			} catch (Exception e) {
-				System.out.println("Invalid input. Please re-enter your choice.");
+				System.out.println("Error processing your input.");
 			}
 		}
 	}

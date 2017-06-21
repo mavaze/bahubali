@@ -23,7 +23,7 @@ public class HomeCompositeAction extends AbstractAction {
 		
 		Action newGameAction = new NewGameAction(listener).builder().backAction(this).build();
 		Action loadGameAction = new LoadGameAction(listener).builder().backAction(this).build();
-		Action exitGameAction = new ExitGameAction();
+		Action exitGameAction = new ExitGameAction().builder().listener(listener).build();
 		
 		actions.add(newGameAction);
 		actions.add(loadGameAction);

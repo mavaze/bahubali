@@ -26,7 +26,7 @@ public class PlayerCompositeAction extends AbstractAction {
 			Action updated = ((AbstractAction) action).builder().backAction(this).listener(listener).build();
 			actions.add(updated);
 		}
-		actions.add(new QuitAndSaveAction());
+		actions.add(new QuitAndSaveAction().builder().listener(listener).build());
 	}
 
 	@Override
