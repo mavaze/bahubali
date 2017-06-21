@@ -7,14 +7,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import com.mavaze.puzzles.bahubali.core.domain.Snapshot;
+import com.mavaze.puzzles.bahubali.core.domain.GameSnapshot;
 
 public class SerializedSnapshotDao implements SnapshotDao {
 
 	@Override
-	public String save(final Snapshot snapshot) throws IOException {
-		String identifier = null;
-		try (FileOutputStream fout = new FileOutputStream(identifier + ".snapshot");
+	public String save(final GameSnapshot snapshot) throws IOException {
+		String identifier = snapshot.getMenuName();
+		try (FileOutputStream fout = new FileOutputStream(
+				new File("snapshots", identifier + ".snapshot"));
 				ObjectOutputStream oos = new ObjectOutputStream(fout)) {
 			oos.writeObject(snapshot);
 		}
@@ -22,10 +23,10 @@ public class SerializedSnapshotDao implements SnapshotDao {
 	}
 
 	@Override
-	public Snapshot load(final File file) throws ClassNotFoundException, IOException {
+	public GameSnapshot load(final File file) throws ClassNotFoundException, IOException {		
 		try (FileInputStream fin = new FileInputStream(file);
 				ObjectInputStream ois = new ObjectInputStream(fin)) {
-			return (Snapshot) ois.readObject();
+			return (GameSnapshot) ois.readObject();
 		}
 	}
 

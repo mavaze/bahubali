@@ -2,11 +2,13 @@ package com.mavaze.puzzles.bahubali.thrones.character;
 
 import java.util.Map;
 
-import com.mavaze.puzzles.bahubali.core.domain.Character;
-import com.mavaze.puzzles.bahubali.core.domain.Health;
+import com.mavaze.puzzles.bahubali.core.character.GameCharacter;
+import com.mavaze.puzzles.bahubali.core.character.Health;
 
-public class VelaryonHouse implements Character {
+public class VelaryonHouse implements GameCharacter {
 	
+	private static final long serialVersionUID = -8231980973947627322L;
+
 	@Override
 	public String getMenuName() {
 		return "House Velaryon";
@@ -20,8 +22,7 @@ public class VelaryonHouse implements Character {
 
 	@Override
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

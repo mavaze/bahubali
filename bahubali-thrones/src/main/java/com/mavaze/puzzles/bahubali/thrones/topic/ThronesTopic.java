@@ -3,19 +3,19 @@ package com.mavaze.puzzles.bahubali.thrones.topic;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mavaze.puzzles.bahubali.core.action.Action;
-import com.mavaze.puzzles.bahubali.core.domain.Entity;
+import com.mavaze.puzzles.bahubali.core.actions.Action;
+import com.mavaze.puzzles.bahubali.core.domain.GameEntity;
 import com.mavaze.puzzles.bahubali.core.layout.Layout;
 import com.mavaze.puzzles.bahubali.core.layout.MapLayout;
 import com.mavaze.puzzles.bahubali.core.topic.Topic;
+import com.mavaze.puzzles.bahubali.thrones.actions.ClashWithHouseAction;
+import com.mavaze.puzzles.bahubali.thrones.actions.WanderKingdomAction;
 import com.mavaze.puzzles.bahubali.thrones.character.BaratheonHouse;
 import com.mavaze.puzzles.bahubali.thrones.character.LannisterHouse;
 import com.mavaze.puzzles.bahubali.thrones.character.MormontHouse;
 import com.mavaze.puzzles.bahubali.thrones.character.TargaryenHouse;
 import com.mavaze.puzzles.bahubali.thrones.character.TullyHouse;
 import com.mavaze.puzzles.bahubali.thrones.character.VelaryonHouse;
-import com.mavaze.puzzles.bahubali.thrones.command.ClashWithHouseAction;
-import com.mavaze.puzzles.bahubali.thrones.command.WanderKingdomAction;
 import com.mavaze.puzzles.bahubali.thrones.entity.CasterlyRock;
 import com.mavaze.puzzles.bahubali.thrones.entity.CastleBlack;
 import com.mavaze.puzzles.bahubali.thrones.entity.Dragonstone;
@@ -26,9 +26,11 @@ import com.mavaze.puzzles.bahubali.thrones.entity.Winterfall;
 
 public class ThronesTopic implements Topic {
 		
+	private static final long serialVersionUID = -1299431477035090705L;
+
 	private MapLayout mapLayout;
 	
-	private List<Entity> entities;
+	private List<GameEntity> entities;
 	
 	private List<Action> playerActions;
 
@@ -38,10 +40,10 @@ public class ThronesTopic implements Topic {
 	}
 	
 	public ThronesTopic() {
-		mapLayout = new ThronesMapLayout(51, 0, 100, 48);
+		mapLayout = new ThronesMapLayout(81, 0, 180, 48);
 		
 		// Register different places and houses (characters)
-		entities = new ArrayList<Entity>();
+		entities = new ArrayList<GameEntity>();
 		registerPlaces();
 		registerHouses();
 		
@@ -80,7 +82,7 @@ public class ThronesTopic implements Topic {
 	}
 
 	@Override
-	public List<Entity> getEntities() {
+	public List<GameEntity> getEntities() {
 		return entities;
 	}
 

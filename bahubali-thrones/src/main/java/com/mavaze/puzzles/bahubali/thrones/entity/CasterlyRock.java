@@ -2,10 +2,12 @@ package com.mavaze.puzzles.bahubali.thrones.entity;
 
 import java.util.Map;
 
-import com.mavaze.puzzles.bahubali.core.domain.Entity;
+import com.mavaze.puzzles.bahubali.core.domain.GameEntity;
 
-public class CasterlyRock implements Entity {
+public class CasterlyRock implements GameEntity {
 	
+	private static final long serialVersionUID = -7799439822991056395L;
+
 	@Override
 	public String getMenuName() {
 		return "Casterly Rock";

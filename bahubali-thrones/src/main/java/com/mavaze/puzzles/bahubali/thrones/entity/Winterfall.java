@@ -2,9 +2,9 @@ package com.mavaze.puzzles.bahubali.thrones.entity;
 
 import java.util.Map;
 
-import com.mavaze.puzzles.bahubali.core.domain.Entity;
+import com.mavaze.puzzles.bahubali.core.domain.GameEntity;
 
-public class Winterfall implements Entity {
+public class Winterfall implements GameEntity {
 	
 	@Override
 	public String getMenuName() {

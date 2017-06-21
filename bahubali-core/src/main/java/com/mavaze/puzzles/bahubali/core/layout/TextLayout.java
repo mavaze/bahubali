@@ -1,7 +1,10 @@
 package com.mavaze.puzzles.bahubali.core.layout;
 
-public abstract class TextLayout implements Layout {
-	
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public abstract class TextLayout implements Layout, Serializable {
+
 	protected int x1, y1, x2, y2;
 	
 	protected char area[][];

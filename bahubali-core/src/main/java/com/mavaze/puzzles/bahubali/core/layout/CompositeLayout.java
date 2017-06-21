@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class CompositeLayout extends TextLayout {
+
+	private static final long serialVersionUID = 6830554961792345566L;
 	
 	private Map<String, TextLayout> embeddedLayouts = new HashMap<>();
 
@@ -18,13 +20,13 @@ public class CompositeLayout extends TextLayout {
 		
 		super(0, 0, 100, 48);
 		
-		TextLayout statisticsLayout = new StatisticsLayout(0, 29, 50, 38);
+		TextLayout statisticsLayout = new StatisticsLayout(0, 26, 80, 35);
 		embeddedLayouts.put(StatisticsLayout.KEY, statisticsLayout);
 		
-		TextLayout menusLayout = new MenusLayout(0, 39, 50, 48);
+		TextLayout menusLayout = new MenusLayout(0, 36, 80, 48);
 		embeddedLayouts.put(MenusLayout.KEY, menusLayout);
 		
-		MapLayout mapLayout = new MapLayout(51, 0, 100, 48);
+		MapLayout mapLayout = new MapLayout(81, 0, 180, 48);
 		embeddedLayouts.put(MapLayout.KEY, mapLayout);
 	}
 

@@ -4,8 +4,9 @@ import java.util.Map;
 
 public class MapLayout extends TextLayout {
 	
-	@SuppressWarnings("unused")
-	private String mapLayoutConfigFile;
+	private static final long serialVersionUID = 5414682901634609361L;
+
+	protected String mapLayoutConfigFile;
 	
 	public static final String KEY = "MAP";
 	

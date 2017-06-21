@@ -3,8 +3,8 @@ package com.mavaze.puzzles.bahubali.classic.topic;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mavaze.puzzles.bahubali.core.action.Action;
-import com.mavaze.puzzles.bahubali.core.domain.Entity;
+import com.mavaze.puzzles.bahubali.core.actions.Action;
+import com.mavaze.puzzles.bahubali.core.domain.GameEntity;
 import com.mavaze.puzzles.bahubali.core.layout.Layout;
 import com.mavaze.puzzles.bahubali.core.layout.MapLayout;
 import com.mavaze.puzzles.bahubali.core.topic.Topic;
@@ -13,7 +13,7 @@ public class ClassicTopic implements Topic {
 		
 	private MapLayout mapLayout;
 	
-	private List<Entity> entities;
+	private List<GameEntity> entities;
 	
 	private List<Action> playerActions;
 	
@@ -24,7 +24,7 @@ public class ClassicTopic implements Topic {
 	
 	public ClassicTopic() {
 		mapLayout = new ClassicMapLayout(51, 0, 100, 48);
-		entities = new ArrayList<Entity>();
+		entities = new ArrayList<GameEntity>();
 		playerActions = new ArrayList<>();
 	}
 
@@ -34,7 +34,7 @@ public class ClassicTopic implements Topic {
 	}
 
 	@Override
-	public List<Entity> getEntities() {
+	public List<GameEntity> getEntities() {
 		return entities;
 	}
 

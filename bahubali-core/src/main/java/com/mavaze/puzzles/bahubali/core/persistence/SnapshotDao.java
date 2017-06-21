@@ -3,12 +3,12 @@ package com.mavaze.puzzles.bahubali.core.persistence;
 import java.io.File;
 import java.io.IOException;
 
-import com.mavaze.puzzles.bahubali.core.domain.Snapshot;
+import com.mavaze.puzzles.bahubali.core.domain.GameSnapshot;
 
 public interface SnapshotDao {
 
-	String save(Snapshot snapshot) throws Exception;
+	String save(GameSnapshot snapshot) throws Exception;
 
-	Snapshot load(File file) throws ClassNotFoundException, IOException;
+	GameSnapshot load(File file) throws ClassNotFoundException, IOException;
 
 }

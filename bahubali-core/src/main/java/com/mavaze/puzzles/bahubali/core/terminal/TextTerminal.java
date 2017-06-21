@@ -2,9 +2,9 @@ package com.mavaze.puzzles.bahubali.core.terminal;
 
 import java.util.Scanner;
 
+import com.mavaze.puzzles.bahubali.core.character.Player;
 import com.mavaze.puzzles.bahubali.core.context.GameContextHolder;
 import com.mavaze.puzzles.bahubali.core.layout.TextLayout;
-import com.mavaze.puzzles.bahubali.core.player.Player;
 
 public class TextTerminal implements Terminal {
 
@@ -35,12 +35,12 @@ public class TextTerminal implements Terminal {
 		}
 		
 		String playerName = "Guest";
-		Player player = GameContextHolder.getContext().getPlayer();
+		Player player = GameContextHolder.getContext().getActivePlayer();
 		if (player!=null && player.getName()!=null) {
 			playerName = player.getName();
 		}
 		
-		System.out.print("[" + playerName + "] " + GameContextHolder.getContext().getActiveAction().getMenuName() + " # ");
+		System.out.print("[" + playerName + "] # ");
 		while(true) {
 			try {
 				String answer = scanner.nextLine();

@@ -17,7 +17,7 @@ public final class ScreenStateChangeListener implements StateChangeListener {
 	
 	@Override
 	public void onMenusLayoutUpdated(MenusUpdateEvent event) {
-		screenController.updateActions(event.getMenus());
+		screenController.updateMenus(event);
 	}
 	
 	@Override
