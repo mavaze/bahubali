@@ -13,7 +13,8 @@ The requirements are quite lose demanding a lot imagination than focusing on any
 
 ### Workflow 2 (Fighting with opponent):
 1.	New Game > Select Theme > Create Player > Display user possible actions (theme decides)
-2.	Player wants to fight > Display list of living characters (again theme decides) 
+2.	Player wants to fight > Display list of **living** characters (again theme decides) 
+3.  For simple implementation, Player simply defeats the opponent and XP increases by 10. This is all based on the FightStrategy you use. Topics can implement a better algorithm which simulate the fight in steps, with health of both player and opponent getting damaged with some algorithm taking into consideration of opponent's XP, the type of weapon they use, shield, if they are using etc.  
 
 ### Workflow 3 (Saving Game):
 1.	New Game > Select Theme > Create Player > Display user possible actions (theme decides)
@@ -54,3 +55,4 @@ This is a maven structured application with following 4 modules:
 mvn clean package
 sh run.sh
 ```
+For windows, execute manually the mvn command written in run.sh
