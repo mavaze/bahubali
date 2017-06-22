@@ -25,14 +25,17 @@ The requirements are quite lose demanding a lot imagination than focusing on any
 1.	Load Game > Show List of saved snapshots
 2.	User selects one and bypass all initial steps as theme, player, living objects, last actions etc. were restored to its saved state, from where player can resume game.
 
+# ScreenShots
+
 # Design Considerations:
 1.	Coded it to interfaces at maximum extent so that one implementation can be swapped out with another one, achieving lose coupling.
 2.	Supports multiple Topics/Themes and with one line change of code (call register method of TopicRegistry which maintains list of loaded themes) and addition of an jar in classpath will do its magic. Currently I have 2 themes viz. ‘Classic’ and ‘Game of Thrones’. ‘Classic’ one is not fully implemented though.
 3.	Since future requirement could be to map an object on the map, instead of writing sysouts one after another, the text on screen is managed with its x,y coordinates.
-4.	Display is layout based and a composite layout is created with StatisticsLayout, MenusLayout and MapLayout as embedded containers. The names suggest their purpose. Theme can decide its own map, and will render itself in MapLayout (though it is yet to be implemented).
-5.	A ‘Terminal’ interface is introduced to let us tomorrow swap current console based terminal with any other, say graphical one, with possible support of swing/awt.
-6.	Terminal is updated only and only through ScreenController which manages Screen State and gets updated on receiving specific events from various part of code.
-7.	MenuItem interface tells which Items be appeared as options list to let user chose one from. Some examples are, Topics, Actions, Snapshots which implement the MenuItem interface.
+4.	Display is layout based and a **CompositeLayout** is created with **StatisticsLayout**, **MenusLayout** and **MapLayout** as embedded containers. The names suggest their purpose. Theme can decide its own map, and will render itself in **MapLayout** (though it is yet to be implemented).
+5.	A **Terminal** interface is introduced to let us tomorrow swap current console based terminal with any other, say graphical one, with possible support of swing/awt.
+6.	Terminal is updated only and only through **ScreenController** which manages **ScreenState** and gets updated on receiving specific events from various part of code.
+7.	**MenuItem** interface tells which Items be appeared as options list to let user chose one from. Some examples are, **Topic**, **Action**, **Snapshot** which implement the MenuItem interface.
+8.  Topics should implement **FightStrategy** interface to provide a finer algorithm to simulate the impact of flight on player's resources.
 
 # Modules
 
@@ -49,6 +52,16 @@ This is a maven structured application with following 4 modules:
 
 * **bahubali-build**
 ...Holds entry point of game i.e. Main class. It loads the themes into ThemeRegistry and give game a push. This can be extended to read theme configuration from xml/properties file to control application from outside. 
+
+# How to create a theme
+Please refer to bahubali-thrones module. You will basically need to clone and provide following ...
+1. Actions (see com.mavaze.puzzles.bahubali.thrones.actions package)
+2. Characters (see com.mavaze.puzzles.bahubali.thrones.character package)
+3. Entities (like buildings, static objects etc.) (see see com.mavaze.puzzles.bahubali.thrones.entity package)
+4. Implementation of MapLayout and Topic interfaces. (see com.mavaze.puzzles.bahubali.thrones.topic package)
+5. Once module is created, add it in bahubali-build pom.xml.
+6. And register the newly created Topic in Main class com.mavaze.puzzles.bahubali.EntryPoint with call like TopicRegistry.getInstance().register(new ThronesTopic());
+
 
 # How to compile and run
 ```
