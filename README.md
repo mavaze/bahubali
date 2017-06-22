@@ -26,6 +26,14 @@ The requirements are quite lose demanding a lot imagination than focusing on any
 2.	User selects one and bypass all initial steps as theme, player, living objects, last actions etc. were restored to its saved state, from where player can resume game.
 
 # ScreenShots
+![Home Screen](https://raw.githubusercontent.com/mavaze/bahubali/master/screenshots/01HomeScreen.PNG)
+![New Game](https://raw.githubusercontent.com/mavaze/bahubali/master/screenshots/02SelectTheme.PNG)
+![Create Player](https://raw.githubusercontent.com/mavaze/bahubali/master/screenshots/03CreatePlayer.PNG)
+![Player Options](https://raw.githubusercontent.com/mavaze/bahubali/master/screenshots/04PlayerOptions.PNG)
+![Exploring](https://raw.githubusercontent.com/mavaze/bahubali/master/screenshots/05Exploring.PNG)
+![Clash of Houses](https://raw.githubusercontent.com/mavaze/bahubali/master/screenshots/06ClashOfHouses.PNG)
+![Defeated Opponent](https://raw.githubusercontent.com/mavaze/bahubali/master/screenshots/07DefeatedOpponent.PNG)
+![Loading Game](https://raw.githubusercontent.com/mavaze/bahubali/master/screenshots/08LoadingGame.PNG)
 
 # Design Considerations:
 1.	Coded it to interfaces at maximum extent so that one implementation can be swapped out with another one, achieving lose coupling.
