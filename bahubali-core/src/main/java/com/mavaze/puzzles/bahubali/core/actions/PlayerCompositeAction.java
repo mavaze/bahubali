@@ -42,7 +42,7 @@ public class PlayerCompositeAction extends AbstractAction {
 	@Override
 	public void postExecute(String response) {
 		int selectedOption = Integer.parseInt(response);
-		if (selectedOption > 0 || selectedOption <= actions.size() + 1) {
+		if (selectedOption > 0 && selectedOption <= actions.size() + 1) {
 			actions.get(selectedOption - 1).execute();
 		} else {
 			throw new NumberFormatException("Invalid option selected.");

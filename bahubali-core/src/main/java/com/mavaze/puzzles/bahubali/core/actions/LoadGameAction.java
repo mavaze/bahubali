@@ -3,6 +3,8 @@ package com.mavaze.puzzles.bahubali.core.actions;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import com.mavaze.puzzles.bahubali.core.context.GameContext;
@@ -74,7 +76,7 @@ public class LoadGameAction extends AbstractAction {
 		
 		int selectedOption = Integer.parseInt(response);
 		
-		if (selectedOption > 0 || selectedOption <= snapshots.size()) {
+		if (selectedOption > 0 && selectedOption <= snapshots.size()) {
 			
 			GameSnapshot loadedSnapshot = snapshots.get(selectedOption - 1);			
 			GameContext context = GameContextHolder.getContext();
@@ -82,6 +84,8 @@ public class LoadGameAction extends AbstractAction {
 			context.setActivePlayer(loadedSnapshot.getLastPlayer());
 			listener.onStatisticsUpdated(new StatisticsUpdateEvent());
 			new PlayerCompositeAction(listener).execute();			
+		} else if (backAction != null && selectedOption == snapshots.size() + 1) {
+			backAction.execute();
 		} else {
 			throw new NumberFormatException("Invalid option selected.");
 		}

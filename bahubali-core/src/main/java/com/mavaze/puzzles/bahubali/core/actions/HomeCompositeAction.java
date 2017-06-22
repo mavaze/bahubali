@@ -41,7 +41,7 @@ public class HomeCompositeAction extends AbstractAction {
 	@Override
 	public void postExecute(String response) {
 		int selectedOption = Integer.parseInt(response);
-		if (selectedOption > 0 || selectedOption <= actions.size()) {
+		if (selectedOption > 0 && selectedOption <= actions.size()) {
 			actions.get(selectedOption - 1).execute();
 		} else {
 			throw new NumberFormatException("Invalid option selected.");
