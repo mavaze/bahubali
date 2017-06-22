@@ -7,6 +7,8 @@ public class LannisterHouse implements GameCharacter {
 
 	private static final long serialVersionUID = 5125377008411844823L;
 
+	private Health health = new Health(100, 0, 0);
+
 	@Override
 	public String getMenuName() {
 		return "House Lannister";
@@ -14,13 +16,12 @@ public class LannisterHouse implements GameCharacter {
 
 	@Override
 	public boolean isAlive() {
-		return true;
+		return getHealth().getLife() > 0;
 	}
 
 	@Override
 	public Health getHealth() {
-		// TODO Auto-generated method stub
-		return null;
+		return health;
 	}
 
 }

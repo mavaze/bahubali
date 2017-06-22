@@ -76,17 +76,12 @@ public class LoadGameAction extends AbstractAction {
 		
 		if (selectedOption > 0 || selectedOption <= snapshots.size()) {
 			
-			GameSnapshot loadedSnapshot = snapshots.get(selectedOption - 1);
-			Action activeAction = ((AbstractAction) loadedSnapshot.getLastAction())
-					.builder().listener(listener).build();
-			
+			GameSnapshot loadedSnapshot = snapshots.get(selectedOption - 1);			
 			GameContext context = GameContextHolder.getContext();
 			context.setActiveTopic(loadedSnapshot.getLastTopic());
 			context.setActivePlayer(loadedSnapshot.getLastPlayer());
-			context.setActiveAction(activeAction);
-			
 			listener.onStatisticsUpdated(new StatisticsUpdateEvent());
-			activeAction.execute();
+			new PlayerCompositeAction(listener).execute();			
 		} else {
 			throw new NumberFormatException("Invalid option selected.");
 		}

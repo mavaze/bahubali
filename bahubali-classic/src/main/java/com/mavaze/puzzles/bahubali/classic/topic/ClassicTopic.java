@@ -11,6 +11,8 @@ import com.mavaze.puzzles.bahubali.core.topic.Topic;
 
 public class ClassicTopic implements Topic {
 		
+	private static final long serialVersionUID = -3592116646575852991L;
+
 	private MapLayout mapLayout;
 	
 	private List<GameEntity> entities;
@@ -23,7 +25,7 @@ public class ClassicTopic implements Topic {
 	}
 	
 	public ClassicTopic() {
-		mapLayout = new ClassicMapLayout(51, 0, 100, 48);
+		mapLayout = new ClassicMapLayout(81, 0, 180, 48);
 		entities = new ArrayList<GameEntity>();
 		playerActions = new ArrayList<>();
 	}

@@ -6,6 +6,8 @@ import com.mavaze.puzzles.bahubali.core.character.Health;
 public class BaratheonHouse implements GameCharacter {
 	
 	private static final long serialVersionUID = -111136483853985912L;
+	
+	private Health health = new Health(100, 0, 0);
 
 	@Override
 	public String getMenuName() {
@@ -14,13 +16,12 @@ public class BaratheonHouse implements GameCharacter {
 
 	@Override
 	public boolean isAlive() {
-		return true;
+		return getHealth().getLife() > 0;
 	}
 
 	@Override
 	public Health getHealth() {
-		// TODO Auto-generated method stub
-		return null;
+		return health;
 	}
 
 }

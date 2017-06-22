@@ -18,6 +18,8 @@ public class PlayerCompositeAction extends AbstractAction {
 	public String getMenuName() {
 		return "Player Actions";
 	}
+	
+	public PlayerCompositeAction() { }
 
 	public PlayerCompositeAction(StateChangeListener listener) {
 		super(listener);

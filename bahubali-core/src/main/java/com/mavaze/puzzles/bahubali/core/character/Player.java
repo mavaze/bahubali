@@ -2,6 +2,7 @@ package com.mavaze.puzzles.bahubali.core.character;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.mavaze.puzzles.bahubali.core.actions.Action;
 
@@ -21,7 +22,7 @@ public class Player implements GameCharacter, Serializable {
 
 	private String name;
 	
-	private int xp = 10;
+	private AtomicInteger xp = new AtomicInteger(10);
 
 	private Health health = new Health(100, 50, 3);
 	
@@ -48,7 +49,7 @@ public class Player implements GameCharacter, Serializable {
 
 	@Override
 	public boolean isAlive() {
-		return true;
+		return getHealth().getLife() > 0;
 	}
 
 	@Override
@@ -56,7 +57,7 @@ public class Player implements GameCharacter, Serializable {
 		return health;
 	}
 
-	public int getXp() {
+	public AtomicInteger getXp() {
 		return xp;
 	}
 

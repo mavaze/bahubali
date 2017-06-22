@@ -1,6 +1,7 @@
 package com.mavaze.puzzles.bahubali.core.character;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 
@@ -12,7 +13,7 @@ public class Health implements Serializable {
 	private static final long serialVersionUID = -116155433842120219L;
 
 	// A percentage value suggesting the likelyhood of the character being alive
-	protected int life;
+	protected AtomicInteger life;
 	
 	// Shield lessen the impact of hit on health
 	protected int shield;
@@ -21,13 +22,20 @@ public class Health implements Serializable {
 	protected int medicalKit;
 
 	public Health(int life, int shield, int medicalKit) {
-		this.life = life;
+		this.life = new AtomicInteger(life);
 		this.shield = shield;
 		this.medicalKit = medicalKit;
 	}
 
 	public int getLife() {
-		return life;
+		return life.get();
+	}
+	
+	public int damageAndGetLife(int delta) {
+		if(life.addAndGet(-delta) <= 0) {
+			life.set(0);
+		};
+		return life.get();
 	}
 
 	public int getShield() {
