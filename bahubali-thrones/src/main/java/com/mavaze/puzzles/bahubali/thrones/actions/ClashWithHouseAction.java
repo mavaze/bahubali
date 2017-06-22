@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.mavaze.puzzles.bahubali.core.actions.AbstractAction;
 import com.mavaze.puzzles.bahubali.core.actions.BackAction;
-import com.mavaze.puzzles.bahubali.core.actions.EchoAction;
 import com.mavaze.puzzles.bahubali.core.actions.FightAction;
 import com.mavaze.puzzles.bahubali.core.character.GameCharacter;
 import com.mavaze.puzzles.bahubali.core.domain.GameEntity;
@@ -46,11 +45,10 @@ public class ClashWithHouseAction extends AbstractAction {
 		int selectedOption = Integer.parseInt(response);
 		if (selectedOption > 0 && selectedOption <= houses.size()) {
 			GameCharacter house = houses.get(selectedOption - 1);
-			FightAction fight = (FightAction) new FightAction().builder().listener(listener).build();
+			FightAction fight = (FightAction) new FightAction().builder().listener(listener).backAction(this).build();
 			fight.setOpponent(house);
 			fight.execute();
 			listener.onStatisticsUpdated(new StatisticsUpdateEvent());
-			new EchoAction("You fought with " + house.getMenuName()).builder().listener(listener).nextAction(this).build().execute();
 		} else if (backAction != null && selectedOption == houses.size() + 1) {
 			backAction.execute();
 		} else {

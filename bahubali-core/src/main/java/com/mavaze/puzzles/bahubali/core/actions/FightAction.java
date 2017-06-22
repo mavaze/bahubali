@@ -36,6 +36,8 @@ public class FightAction extends AbstractAction {
 		super.execute();
 		Player player = GameContextHolder.getContext().getActivePlayer();
 		strategy.fight(player, opponent);
+		new EchoAction("You defeated " + opponent.getMenuName() + ". XP increased by 10.")
+				.builder().listener(listener).nextAction(backAction).build().execute();
 	}
 
 }
