@@ -3,7 +3,6 @@ package com.mavaze.puzzles.bahubali.core.actions;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -27,11 +26,5 @@ public class ExitGameActionTest {
 	@Test
 	public void testExitActionMunuName() {
 		assertEquals("Exit", actionUnderTest.getMenuName());
-	}
-	
-	@Test
-	@Ignore
-	public void testExitActionPostExecutionFlow() {
-		
 	}
 }
