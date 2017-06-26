@@ -46,6 +46,7 @@ public class NewGameActionTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
+		GameContextHolder.getContext().setActivePlayer(null);
 		actionUnderTest.builder().backAction(backAction).build();
 	}
 	

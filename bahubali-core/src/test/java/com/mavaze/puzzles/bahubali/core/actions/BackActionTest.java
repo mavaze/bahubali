@@ -21,6 +21,7 @@ public class BackActionTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
+		GameContextHolder.getContext().setActiveAction(null);
 		actionUnderTest = new BackAction(backAction);
 	}
 	
