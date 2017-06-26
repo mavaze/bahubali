@@ -3,6 +3,7 @@ package com.mavaze.puzzles.bahubali.core.actions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -65,7 +66,20 @@ public class LoadGameActionTest {
 	}
 	
 	@Test
-	public void testLoadGameActionExecutionFlowWihSnapshotsAvailable() throws IOException {
+	public void testLoadGameActionExecutionFlowWhenSnapshotFailToLoad() throws IOException {
+		File dummyFile = new File("dummy.snapshot");
+		when(actionUnderTest.getStoredSnapshots()).thenReturn(new File[] {dummyFile});
+		when(snapshotDao.load(dummyFile)).thenThrow(new IOException());
+		
+		actionUnderTest.execute();
+		
+		verify(listener).onMenusLayoutUpdated(eventCaptor.capture());		
+		assertEquals("No snapshot is available", eventCaptor.getValue().getMenuTitle());
+		assertNotEquals(actionUnderTest, GameContextHolder.getContext().getActiveAction());
+	}
+	
+	@Test
+	public void testLoadGameActionExecutionFlowWithSnapshotsAvailable() throws IOException {
 		GameSnapshot snapshot = mock(GameSnapshot.class);
 		File dummyFile = new File("dummy.snapshot");
 		when(actionUnderTest.getStoredSnapshots()).thenReturn(new File[] {dummyFile});
