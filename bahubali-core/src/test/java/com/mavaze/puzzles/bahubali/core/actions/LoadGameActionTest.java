@@ -3,7 +3,6 @@ package com.mavaze.puzzles.bahubali.core.actions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -50,7 +49,7 @@ public class LoadGameActionTest {
 	}
 	
 	@Test
-	public void testHomeCompositeActionMunuName() {
+	public void testLoadGameActionMenuName() {
 		assertEquals("Load Game", actionUnderTest.getMenuName());
 	}
 	
