@@ -19,15 +19,15 @@ public class ClassicTopic implements Topic {
 	
 	private List<Action> playerActions;
 	
+	public ClassicTopic() {
+		mapLayout = new ClassicMapLayout(81, 0, 180, 48);
+		entities = new ArrayList<>();
+		playerActions = new ArrayList<>();
+	}
+	
 	@Override
 	public String getMenuName() {
 		return "Classic";
-	}
-	
-	public ClassicTopic() {
-		mapLayout = new ClassicMapLayout(81, 0, 180, 48);
-		entities = new ArrayList<GameEntity>();
-		playerActions = new ArrayList<>();
 	}
 
 	@Override

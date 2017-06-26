@@ -9,7 +9,7 @@ public class StatisticsLayout extends TextLayout {
 
 	public static final String KEY = "STATISTICS";
 	
-	private static final int x_margin = 5;
+	private static final int XMARGIN = 5;
 
 	public StatisticsLayout(int x1, int y1, int x2, int y2) {
 		super(x1, y1, x2, y2);
@@ -26,9 +26,9 @@ public class StatisticsLayout extends TextLayout {
 	}
 
 	private void update(Map<String, Object> event) {
-		int y = y2 - event.entrySet().size() - 1;			
+		int y = getY2() - event.entrySet().size() - 1;			
 		for(Entry<String, Object> stat : event.entrySet()) {
-			this.setStringAt(x1 + x_margin, y++, stat.getKey() + " -> " + stat.getValue().toString());
+			this.setStringAt(getX1() + XMARGIN, y++, stat.getKey() + " -> " + stat.getValue().toString());
 		}		
 	}
 	

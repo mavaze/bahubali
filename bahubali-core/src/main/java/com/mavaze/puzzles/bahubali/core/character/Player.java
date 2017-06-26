@@ -1,6 +1,7 @@
 package com.mavaze.puzzles.bahubali.core.character;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -28,7 +29,7 @@ public class Player implements GameCharacter, Serializable {
 	
 	private Resources resources = new Resources(1000, 10);
 		
-	private List<Action> actions;
+	private List<Action> actions = new ArrayList<>();
 
 	public Player(String name) {
 		this.name = name;

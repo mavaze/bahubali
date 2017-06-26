@@ -1,6 +1,8 @@
 package com.mavaze.puzzles.bahubali.core.actions;
 
-public class BackAction extends AbstractAction {
+import com.mavaze.puzzles.bahubali.core.domain.MenuItem;
+
+public class BackAction extends AbstractAction<MenuItem> {
 		
 	private static final long serialVersionUID = 4132140587469546261L;
 
@@ -9,13 +11,13 @@ public class BackAction extends AbstractAction {
 	}
 
 	@Override
-	public void execute() {
-		backAction.execute();
-	}
-
-	@Override
 	public String getMenuName() {
 		return "Back";
+	}
+	
+	@Override
+	public void execute() {
+		backAction.execute();
 	}
 
 }

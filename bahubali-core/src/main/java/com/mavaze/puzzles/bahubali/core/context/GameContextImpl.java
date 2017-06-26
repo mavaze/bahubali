@@ -1,7 +1,5 @@
 package com.mavaze.puzzles.bahubali.core.context;
 
-import java.util.Map;
-
 import com.mavaze.puzzles.bahubali.core.actions.Action;
 import com.mavaze.puzzles.bahubali.core.character.Player;
 import com.mavaze.puzzles.bahubali.core.topic.Topic;
@@ -15,10 +13,8 @@ public class GameContextImpl implements GameContext {
 	private Player activePlayer;
 	
 	private Action activeAction;
-	
-	@SuppressWarnings("unused")
-	private Map<String, Object> properties;
 
+	@Override
 	public Player getActivePlayer() {
 		return activePlayer;
 	}

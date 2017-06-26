@@ -9,12 +9,6 @@ public class CompositeLayout extends TextLayout {
 	private static final long serialVersionUID = 6830554961792345566L;
 	
 	private Map<String, TextLayout> embeddedLayouts = new HashMap<>();
-
-	public void updateState(Map<String, Object> state) {
-		for(Entry<String, TextLayout> entry : embeddedLayouts.entrySet()) {
-			entry.getValue().updateState(state);
-		}
-	}
 	
 	public CompositeLayout() {
 		
@@ -28,6 +22,13 @@ public class CompositeLayout extends TextLayout {
 		
 		MapLayout mapLayout = new MapLayout(81, 0, 180, 48);
 		embeddedLayouts.put(MapLayout.KEY, mapLayout);
+	}
+	
+	@Override
+	public void updateState(Map<String, Object> state) {
+		for(Entry<String, TextLayout> entry : embeddedLayouts.entrySet()) {
+			entry.getValue().updateState(state);
+		}
 	}
 
 	@Override

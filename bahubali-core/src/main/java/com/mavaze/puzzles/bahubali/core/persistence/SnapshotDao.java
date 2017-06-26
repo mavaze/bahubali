@@ -7,8 +7,8 @@ import com.mavaze.puzzles.bahubali.core.domain.GameSnapshot;
 
 public interface SnapshotDao {
 
-	String save(GameSnapshot snapshot) throws Exception;
+	String save(GameSnapshot snapshot) throws IOException;
 
-	GameSnapshot load(File file) throws ClassNotFoundException, IOException;
+	GameSnapshot load(File file) throws IOException;
 
 }

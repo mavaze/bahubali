@@ -5,9 +5,15 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public abstract class TextLayout implements Layout, Serializable {
 
-	protected int x1, y1, x2, y2;
+	protected int x1;
 	
-	protected char area[][];
+	protected int y1;
+	
+	protected int x2;
+	
+	protected int y2;
+	
+	protected char[][] area;
 
 	public TextLayout(int x1, int y1, int x2, int y2) {
 		this.x1 = x1;

@@ -12,7 +12,7 @@ public class MenusLayout extends TextLayout {
 
 	public static final String KEY = "MENUS";
 	
-	private static final int x_margin = 5;
+	private static final int XMARGIN = 5;
 
 	public MenusLayout(int x1, int y1, int x2, int y2) {
 		super(x1, y1, x2, y2);
@@ -21,14 +21,14 @@ public class MenusLayout extends TextLayout {
 	private void update(MenusUpdateEvent event) {
 		List<MenuItem> menus = event.getMenus();
 		
-		int y = y2 - menus.size() - 3;
-		this.setStringAt(x1 + x_margin, y, event.getMenuTitle());
+		int y = getY2() - menus.size() - 3;
+		this.setStringAt(getX1() + XMARGIN, y, event.getMenuTitle());
 		
 		y+=2;
 		
 		int index = 1;
 		for(MenuItem menu : menus) {
-			this.setStringAt(x1 + x_margin, y++, index++ + ". " + menu.getMenuName());
+			this.setStringAt(getX1() + XMARGIN, y++, index++ + ". " + menu.getMenuName());
 		}
 	}
 	

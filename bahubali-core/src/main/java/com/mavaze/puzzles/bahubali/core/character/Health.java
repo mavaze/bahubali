@@ -34,7 +34,7 @@ public class Health implements Serializable {
 	public int damageAndGetLife(int delta) {
 		if(life.addAndGet(-delta) <= 0) {
 			life.set(0);
-		};
+		}
 		return life.get();
 	}
 

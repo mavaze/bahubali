@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/mavaze/bahubali.png)](https://travis-ci.org/mavaze/bahubali)
+[![codecov](https://codecov.io/gh/mavaze/bahubali/branch/master/graph/badge.svg)](https://codecov.io/gh/mavaze/bahubali)
+
 # Bahubali
 **Bahubali** is a Hindi word, meaning, *The One with Strong Arms*. This game is named after Hindi movie, [Baahubali 2: The Conclusion](https://en.wikipedia.org/wiki/Baahubali_2:_The_Conclusion), released recently worldwide and making over 700 crores business on box office today. Though this game is nothing to do with the story, it came to my mind while I was in quest for a name in relation to war, combat etc. A German word like ‘Wehrmacht’ sounded cool to me. But finally went ahead with a Hindi name as a popular choice at my end.
 
@@ -43,7 +46,7 @@ The requirements are quite lose demanding a lot imagination than focusing on any
 5.	A **Terminal** interface is introduced to let us tomorrow swap current console based terminal with any other, say graphical one, with possible support of swing/awt.
 6.	Terminal is updated only and only through **ScreenController** which manages **ScreenState** and gets updated on receiving specific events from various part of code.
 7.	**MenuItem** interface tells which Items be appeared as options list to let user chose one from. Some examples are, **Topic**, **Action**, **Snapshot** which implement the MenuItem interface.
-8.  Topics should implement **FightStrategy** interface to provide a finer algorithm to simulate the impact of flight on player's resources.
+8.  Topics should implement **FightStrategy** interface to provide a finer algorithm to simulate the impact of fight on player's resources.
 
 # Modules
 

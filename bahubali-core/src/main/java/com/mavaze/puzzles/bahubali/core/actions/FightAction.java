@@ -6,18 +6,14 @@ import com.mavaze.puzzles.bahubali.core.context.GameContextHolder;
 import com.mavaze.puzzles.bahubali.core.fight.DefaultFightStrategy;
 import com.mavaze.puzzles.bahubali.core.fight.FightStrategy;
 
+@SuppressWarnings("rawtypes")
 public class FightAction extends AbstractAction {
 
 	private static final long serialVersionUID = 736628048599654831L;
 	
-	private FightStrategy strategy;
+	private transient FightStrategy strategy;
 	
 	private GameCharacter opponent;
-	
-	@Override
-	public String getMenuName() {
-		return null;
-	}
 	
 	public FightAction() {
 		this.strategy = new DefaultFightStrategy();
@@ -25,6 +21,11 @@ public class FightAction extends AbstractAction {
 	
 	public FightAction(final FightStrategy strategy) {
 		this.strategy = strategy;
+	}
+	
+	@Override
+	public String getMenuName() {
+		return null;
 	}
 	
 	public void setOpponent(GameCharacter opponent) {

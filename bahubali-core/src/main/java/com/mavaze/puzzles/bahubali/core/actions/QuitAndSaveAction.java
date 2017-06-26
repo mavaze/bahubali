@@ -10,6 +10,7 @@ import com.mavaze.puzzles.bahubali.core.domain.GameSnapshot;
 import com.mavaze.puzzles.bahubali.core.persistence.SerializedSnapshotDao;
 import com.mavaze.puzzles.bahubali.core.persistence.SnapshotDao;
 
+@SuppressWarnings("rawtypes")
 public class QuitAndSaveAction extends AbstractAction {
 
 	private static final long serialVersionUID = -6436943850713182465L;

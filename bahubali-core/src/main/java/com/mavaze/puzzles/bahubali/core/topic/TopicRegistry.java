@@ -5,7 +5,7 @@ import java.util.List;
 
 public final class TopicRegistry {
 	
-	private static TopicRegistry INSTANCE = new TopicRegistry();
+	private static final TopicRegistry INSTANCE = new TopicRegistry();
 	
 	private List<Topic> topics = new ArrayList<>();
 	

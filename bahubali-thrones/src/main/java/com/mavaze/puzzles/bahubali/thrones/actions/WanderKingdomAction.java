@@ -10,16 +10,11 @@ import com.mavaze.puzzles.bahubali.core.character.GameCharacter;
 import com.mavaze.puzzles.bahubali.core.domain.GameEntity;
 import com.mavaze.puzzles.bahubali.core.listener.MenusUpdateEvent;
 
-public class WanderKingdomAction extends AbstractAction {
+public class WanderKingdomAction extends AbstractAction<GameEntity> {
 
 	private static final long serialVersionUID = -7905920327656346508L;
 
 	private List<GameEntity> entities = new ArrayList<>();
-	
-	@Override
-	public String getMenuName() {
-		return "Wander Kingdom";
-	}
 	
 	public WanderKingdomAction(List<GameEntity> entities) {
 		for(GameEntity entity : entities) {
@@ -27,6 +22,16 @@ public class WanderKingdomAction extends AbstractAction {
 				this.entities.add(entity);
 			}
 		}
+	}
+	
+	@Override
+	public String getMenuName() {
+		return "Wander Kingdom";
+	}
+	
+	@Override
+	protected List<GameEntity> getActionMenus() {
+		return entities;
 	}
 
 	@Override
@@ -39,16 +44,9 @@ public class WanderKingdomAction extends AbstractAction {
 	}
 	
 	@Override
-	public void postExecute(String response) {
-		int selectedOption = Integer.parseInt(response);
-		if (selectedOption > 0 && selectedOption <= entities.size()) {
-			GameEntity entity = entities.get(selectedOption - 1);
-			new EchoAction("You visited " + entity.getMenuName()).builder().listener(listener).nextAction(this).build().execute();
-		} else if (backAction != null && selectedOption == entities.size() + 1) {
-			backAction.execute();
-		} else {
-			throw new NumberFormatException("Invalid option selected.");
-		}
+	protected void postExecute(GameEntity entity) {
+		setNextAction(new EchoAction("You visited " + entity.getMenuName())
+				.builder().listener(listener).nextAction(this).build());
 	}
 
 }

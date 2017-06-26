@@ -16,6 +16,7 @@ public class TextTerminal implements Terminal {
 		this.layout = layout;
 	}
 
+	@Override
 	public void clearScreen() {
 		for (int i = 0; i < 50; i++) {
 			System.out.println("\n");

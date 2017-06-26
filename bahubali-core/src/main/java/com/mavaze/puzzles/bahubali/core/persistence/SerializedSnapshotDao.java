@@ -23,10 +23,12 @@ public class SerializedSnapshotDao implements SnapshotDao {
 	}
 
 	@Override
-	public GameSnapshot load(final File file) throws ClassNotFoundException, IOException {		
+	public GameSnapshot load(final File file) throws IOException  {		
 		try (FileInputStream fin = new FileInputStream(file);
 				ObjectInputStream ois = new ObjectInputStream(fin)) {
 			return (GameSnapshot) ois.readObject();
+		} catch (ClassNotFoundException | IOException e) {
+			throw new IOException(e);
 		}
 	}
 

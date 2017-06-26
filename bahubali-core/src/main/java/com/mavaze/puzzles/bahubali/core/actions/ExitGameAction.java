@@ -1,5 +1,6 @@
 package com.mavaze.puzzles.bahubali.core.actions;
 
+@SuppressWarnings("rawtypes")
 public class ExitGameAction extends AbstractAction {
 	
 	private static final long serialVersionUID = -6583631203098389739L;
@@ -11,8 +12,7 @@ public class ExitGameAction extends AbstractAction {
 
 	@Override
 	public void execute() {
-		new EchoAction("Exiting the game.").builder().listener(listener).build().execute();;
+		new EchoAction("Exiting the game.").builder().listener(listener).build().execute();
 		System.exit(0);		
 	}
-
 }

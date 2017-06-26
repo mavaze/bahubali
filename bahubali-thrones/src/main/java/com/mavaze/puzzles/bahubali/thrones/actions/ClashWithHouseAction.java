@@ -11,16 +11,11 @@ import com.mavaze.puzzles.bahubali.core.domain.GameEntity;
 import com.mavaze.puzzles.bahubali.core.listener.MenusUpdateEvent;
 import com.mavaze.puzzles.bahubali.core.listener.StatisticsUpdateEvent;
 
-public class ClashWithHouseAction extends AbstractAction {
+public class ClashWithHouseAction extends AbstractAction<GameCharacter> {
 
 	private static final long serialVersionUID = 7539129148070267448L;
 
 	private List<GameCharacter> houses = new ArrayList<>();
-
-	@Override
-	public String getMenuName() {
-		return "Clash of Houses";
-	}
 
 	public ClashWithHouseAction(List<GameEntity> entities) {
 		for (GameEntity entity : entities) {
@@ -28,6 +23,16 @@ public class ClashWithHouseAction extends AbstractAction {
 				houses.add((GameCharacter) entity);
 			}
 		}
+	}
+	
+	@Override
+	public String getMenuName() {
+		return "Clash of Houses";
+	}
+	
+	@Override
+	protected List<GameCharacter> getActionMenus() {
+		return houses;
 	}
 
 	@Override
@@ -39,24 +44,16 @@ public class ClashWithHouseAction extends AbstractAction {
 		event.addMenu(new BackAction(backAction));
 		listener.onMenusLayoutUpdated(event);
 	}
-
+	
 	@Override
-	public void postExecute(String response) {
-		int selectedOption = Integer.parseInt(response);
-		if (selectedOption > 0 && selectedOption <= houses.size()) {
-			GameCharacter house = houses.get(selectedOption - 1);
-			FightAction fight = (FightAction) new FightAction().builder().listener(listener).backAction(this).build();
-			fight.setOpponent(house);
-			fight.execute();
-			listener.onStatisticsUpdated(new StatisticsUpdateEvent());
-		} else if (backAction != null && selectedOption == houses.size() + 1) {
-			backAction.execute();
-		} else {
-			throw new NumberFormatException("Invalid option selected.");
-		}
+	protected void postExecute(GameCharacter house) {
+		FightAction fight = (FightAction) new FightAction().builder().listener(listener).backAction(this).build();
+		fight.setOpponent(house);
+		fight.execute();
+		listener.onStatisticsUpdated(new StatisticsUpdateEvent().builder().build());
 	}
 
 	private void removeDeadHouses() {
-		houses.removeIf(house -> !((GameCharacter) house).isAlive());
+		houses.removeIf(house -> !house.isAlive());
 	}
 }

@@ -33,23 +33,23 @@ public class ThronesTopic implements Topic {
 	private List<GameEntity> entities;
 	
 	private List<Action> playerActions;
-
-	@Override
-	public String getMenuName() {
-		return "Game of Thrones";
-	}
 	
 	public ThronesTopic() {
 		mapLayout = new ThronesMapLayout(81, 0, 180, 48);
 		
 		// Register different places and houses (characters)
-		entities = new ArrayList<GameEntity>();
+		entities = new ArrayList<>();
 		registerPlaces();
 		registerHouses();
 		
 		// Register player actions
 		playerActions = new ArrayList<>();
 		registerPlayerActions();
+	}
+	
+	@Override
+	public String getMenuName() {
+		return "Game of Thrones";
 	}
 
 	private void registerPlayerActions() {
