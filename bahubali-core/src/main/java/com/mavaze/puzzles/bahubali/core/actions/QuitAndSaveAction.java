@@ -7,6 +7,7 @@ import java.util.Date;
 import com.mavaze.puzzles.bahubali.core.context.GameContext;
 import com.mavaze.puzzles.bahubali.core.context.GameContextHolder;
 import com.mavaze.puzzles.bahubali.core.domain.GameSnapshot;
+import com.mavaze.puzzles.bahubali.core.listener.StateChangeListener;
 import com.mavaze.puzzles.bahubali.core.persistence.SerializedSnapshotDao;
 import com.mavaze.puzzles.bahubali.core.persistence.SnapshotDao;
 
@@ -14,14 +15,24 @@ import com.mavaze.puzzles.bahubali.core.persistence.SnapshotDao;
 public class QuitAndSaveAction extends AbstractAction {
 
 	private static final long serialVersionUID = -6436943850713182465L;
+	
+	private transient SnapshotDao snapshotDao;
+	
+	public QuitAndSaveAction(StateChangeListener listener) {
+		this(listener, new SerializedSnapshotDao());
+	}
+
+	public QuitAndSaveAction(StateChangeListener listener, SnapshotDao snapshotDao) {
+		super(listener);
+		this.snapshotDao = snapshotDao;
+	}
 
 	@Override
 	public String getMenuName() {
 		return "Save and Quit";
 	}
 	
-	@Override
-	public void execute() {
+	private GameSnapshot createSnapshot() {
 		
 		GameContext context = GameContextHolder.getContext();
 		
@@ -33,7 +44,12 @@ public class QuitAndSaveAction extends AbstractAction {
 		snapshot.setLastPlayer(context.getActivePlayer());
 		snapshot.setLastTopic(context.getActiveTopic());
 		
-		SnapshotDao snapshotDao = new SerializedSnapshotDao();
+		return snapshot;
+	}
+	
+	@Override
+	public void execute() {
+		GameSnapshot snapshot = createSnapshot();
 		try {
 			snapshotDao.save(snapshot);
 		} catch (Exception e) {
