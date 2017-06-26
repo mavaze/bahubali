@@ -11,8 +11,6 @@ addons:
     organization: mavaze-github
     token:
       secure: SWbOavsMcXLesjLBc+fQuzsgqDCdeFESwiTuQsHTJFQmH3aU80v5OQOiMZ64EZjrptFjnLN9UN0Ma5M6MaleTYMeqVoBFg8Loimb+gZCxOG7njnWrsNI+31DkOlrhadQiG8Jy4XkunVvrGM1R62sX89Klz5YYnswXj6vxnkwvHVBN/EigswuQqKQhSvVsdd03XeO9eAj455vxHY/8vSHo1f7TDBdqlDHs2ufZK9zfCuFpEUcTPD59A6SEdjFsnUCdYCbnGmrSKD6T6gJ4j9vx8uWklWrYK/z1pkUtVkKNNZ87i2fH0kxmxbzmTtwINer8tPf54xatdiMePBG3H+/+JsH4FNVpdHGQQGsRO2OYDPeMo3ctNGkHqhIL+7OLRXMAKGv0XSEbFkVS82olu85jcROJQjUPZgDSc3mHUTPfaqfduA8v7ro9cXL+zZ4BCnDcOtBznW+IEmMdqXSgygh+8/eB8VL+HMWo4KKcdaiFP+P4RznERWJBzpMaJ62ap3LWyTkAv/b1Mp3wvJ3SHHI74iL7fbbrUhuregxsSejQpCZs/0dyyxUi0jhGThfv1HEsTxvGfblC6PwmDi1NDVIIc7+VvMMbU08n1JVDA720oGfgoJCoKRJC84RotRhPlXHOKhESk+RRnChcKQ7pJnI4cnj9Ims6ilfAaS1MW9m5qE=
-install:
-- mvn dependency:go-offline
 script:
 - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 after_success:
