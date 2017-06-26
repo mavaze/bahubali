@@ -40,6 +40,8 @@ public class CreatePlayerActionTest {
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
 		
+		GameContextHolder.getContext().setActivePlayer(null);
+		
 		Topic topic = mock(Topic.class);
 		GameContextHolder.getContext().setActiveTopic(topic);
 
