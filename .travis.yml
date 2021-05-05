@@ -1,6 +1,5 @@
 language: java
-jdk:
-- oraclejdk8
+dist: xenial
 sudo: false
 cache:
   directories:
@@ -11,10 +10,9 @@ addons:
     organization: mavaze-github
     token:
       secure: oOLIooZtzskKNjzEp9gvlxu2rIQmAlyfNB15WuXbK0BD5PSC18+bxVJzDPMF82AGdZIEN1V0/S65W5jGZRc6azZDBosSZPz+uWirD+1Cn1T88U7zvoRMBymBmJ2ufI+snZpmWtpwatMFMorsm/MSxY/3IEKcI2LM/sRhFonQAtf3sNvFzeE/1YzV/AGGy7JIpGHOfLSJ8R77dg56mLc/Y6mmL9ldVNH0kchYqvg5goQPet1OGEdw3Rll3Z2MGxYyrs6ggZO8zmbJ2R9w7f5KfHV6K8sbhhkzA8svPJ9kprpCWh9ZjG+ojiGyqAOfzjOZ6kyuWqeg0zhfj3WeoRr4nRRISLscxY52BPemDWLm1EH0GHbFMg1M226YnuLZDA7kH6VI84vB080BrCS6UjYoufw/6sH1Fmla6BGJ2YIhj+k71zptLEeGyqByY5rcO3H789NodOBKZZFqJV5j/AgkG+EDSz+MhxH9CpL3K9D/ALJFM7PNtdP00qb/lY06V9UftPGjh+3iOwN7vKMAdasrFws7ansJxZhIaWP1SZ8fNFuu1ul9JtTNLDzq3cEFh2uNpq/GU/XxTt9IbzVNhKQBumblT27uqyWJIBOF3/d8IqFsmy6gQAnx2hBe4t9wpaeUhyyNnxk4D0QIxAODje3bIw/+cfg4tZ3o62NnVZhCnrs=
-install:
-- mvn dependency:go-offline
+install: true
 script:
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+- mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 env:
